@@ -156,8 +156,10 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const occur = str.indexOf(value);
+  if (occur === -1) return str; // проверка на наличие 1-го индекса в строке
+  return str.slice(0, occur) + str.slice(occur + value.length);
 }
 
 /**
@@ -172,8 +174,10 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const occur = str.lastIndexOf(value);
+  if (occur === -1) return str; // проверка на наличие послед. индекса в строке
+  return str.slice(0, occur) + str.slice(occur + value.length);
 }
 
 /**
@@ -188,8 +192,13 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  if (typeof str !== 'string') return 0;
+  let summ = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    summ += str.charCodeAt(i);
+  }
+  return summ;
 }
 
 /**
